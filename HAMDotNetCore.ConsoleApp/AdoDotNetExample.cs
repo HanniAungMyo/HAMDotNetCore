@@ -153,5 +153,40 @@ namespace HAMDotNetCore.ConsoleApp
             Console.WriteLine(status);
         }
 
+
+        public void Update()
+        {
+            Console.WriteLine("Blog Id :");
+            string BlogId = Console.ReadLine();
+
+            Console.WriteLine("BlogTitle:");
+            string BlogTitle = Console.ReadLine();
+
+            Console.WriteLine("BlogAuthor:");
+            string BlogAuthor = Console.ReadLine();
+
+            Console.WriteLine("BlogContent:");
+            string BlogContent = Console.ReadLine();
+
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+            string query = $@"UPDATE [dbo].[Tbl_Blog]
+   SET [BlogTitle] = @BlogTitle
+      ,[BlogAuthor] =@BlogAuthor
+      ,[BlogContent] =@BlogContent
+      ,[DeleteFlag] = 0
+ WHERE BlogId=@BlogId";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@BlogId", BlogId);
+            command.Parameters.AddWithValue("@BlogTitle", BlogTitle);
+            command.Parameters.AddWithValue("@BlogAuthor", BlogAuthor);
+            command.Parameters.AddWithValue("@BlogContent", BlogContent);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            int result = command.ExecuteNonQuery();
+            connection.Close();
+            string status = result > 0 ?"Update Successful" : "Update failed";
+            Console.WriteLine(status);
+        }
+
     }
 }
