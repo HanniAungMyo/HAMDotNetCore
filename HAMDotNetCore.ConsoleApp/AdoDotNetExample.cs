@@ -153,7 +153,6 @@ namespace HAMDotNetCore.ConsoleApp
             Console.WriteLine(status);
         }
 
-
         public void Update()
         {
             Console.WriteLine("Blog Id :");
