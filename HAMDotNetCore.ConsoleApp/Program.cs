@@ -5,4 +5,4 @@ using System.Data.SqlClient;
 
 
 AdoDotNetExample example =new AdoDotNetExample();
-example.Create();
+example.Delete();
