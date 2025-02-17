@@ -6,5 +6,5 @@ using System.Data.SqlClient;
 
 //AdoDotNetExample example =new AdoDotNetExample();
 //example.Update();
-DapperExample dpe= new DapperExample();
-dpe.Delete(3);
+EFCoreExample ef= new EFCoreExample();
+ef.Read();
