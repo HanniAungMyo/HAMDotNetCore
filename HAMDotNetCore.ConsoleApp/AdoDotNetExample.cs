@@ -11,6 +11,7 @@ namespace HAMDotNetCore.ConsoleApp
     public class AdoDotNetExample
     {
         private readonly string _connectionString = "Data Source =LAPTOP\\SQLSERVER;Initial Catalog =DotNet;User Id =sa;Password =sa@123;";
+
         public void Read()
         {
 
@@ -52,55 +53,54 @@ namespace HAMDotNetCore.ConsoleApp
             //    Console.WriteLine("-----------------------------------------------------------");
             //}
         }
+        public void Create()
+        {
+            Console.WriteLine("Blog Title");
+            String blogtitle = Console.ReadLine();
 
-        //public void Create()
-        //{
-        //    Console.WriteLine("Blog Title");
-        //    String blogtitle = Console.ReadLine();
+            Console.WriteLine("Blog Author");
+            String blogAuthor = Console.ReadLine();
 
-        //    Console.WriteLine("Blog Author");
-        //    String blogAuthor = Console.ReadLine();
+            Console.WriteLine("Blog Content");
+            String blogContent = Console.ReadLine();
 
-        //    Console.WriteLine("Blog Content");
-        //    String blogContent = Console.ReadLine();
-
-        //    Console.WriteLine("Delete Flag");
-        //    String DeleteFlag = Console.ReadLine();
-        //    SqlConnection connection = new SqlConnection(_connectionString);
-        //    Console.WriteLine("Connection Opening");
-        //    connection.Open();
-        //    //string query2 = $@"INSERT INTO [dbo].[Tbl_Blog] 
-        //    //                                   ([BlogTitle]
-        //    //                                   ,[BlogAuthor]
-        //    //                                   ,[BlogContent]
-        //    //                                   ,[DeleteFlag])  
-        //    //                                   VALUES
-        //    //                                  ('{blogtitle}'
-        //    //                                  ,'{blogAuthor}'
-        //    //                                  ,'{blogContent}'
-        //    //                                  ,0)";
-        //    string query = $@"INSERT INTO [dbo].[Tbl_Blog] 
-        //                           ([BlogTitle]
-        //                           ,[BlogAuthor]
-        //                           ,[BlogContent]
-        //                           ,[DeleteFlag])  
-        //                           VALUES
-        //                          (@BlogTitle
-        //                          ,@BlogAuthor
-        //                          ,@blogContent
-        //                          ,0)";
-        //    SqlCommand command = new SqlCommand(query, connection);
-        //    command.Parameters.AddWithValue("@BlogTitle", blogtitle);
-        //    command.Parameters.AddWithValue("@BlogAuthor", blogAuthor);
-        //    command.Parameters.AddWithValue("@BlogContent", blogContent);
-        //    int result = command.ExecuteNonQuery();
-        //    //SqlDataAdapter adapter2 = new SqlDataAdapter(command2);
-        //    //DataTable dt2=new DataTable();
-        //    //adapter2.Fill(dt2);
-        //    connection.Close();
-        //    string Status = result > 0 ? "Saving Successfully" : "Save fail";
-        //    Console.WriteLine(Status);
-        //}
+            Console.WriteLine("Delete Flag");
+            String DeleteFlag = Console.ReadLine();
+            SqlConnection connection = new SqlConnection(_connectionString);
+            Console.WriteLine("Connection Opening");
+            connection.Open();
+            //string query2 = $@"INSERT INTO [dbo].[Tbl_Blog] 
+            //                                   ([BlogTitle]
+            //                                   ,[BlogAuthor]
+            //                                   ,[BlogContent]
+            //                                   ,[DeleteFlag])  
+            //                                   VALUES
+            //                                  ('{blogtitle}'
+            //                                  ,'{blogAuthor}'
+            //                                  ,'{blogContent}'
+            //                                  ,0)";
+            string query = $@"INSERT INTO [dbo].[Tbl_Blog] 
+                                   ([BlogTitle]
+                                   ,[BlogAuthor]
+                                   ,[BlogContent]
+                                   ,[DeleteFlag])  
+                                   VALUES
+                                  (@BlogTitle
+                                  ,@BlogAuthor
+                                  ,@blogContent
+                                  ,0)";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@BlogTitle", blogtitle);
+            command.Parameters.AddWithValue("@BlogAuthor", blogAuthor);
+            command.Parameters.AddWithValue("@BlogContent", blogContent);
+            int result = command.ExecuteNonQuery();
+            //SqlDataAdapter adapter2 = new SqlDataAdapter(command2);
+            //DataTable dt2=new DataTable();
+            //adapter2.Fill(dt2);
+            connection.Close();
+            string Status = result > 0 ? "Saving Successfully" : "Save fail";
+            Console.WriteLine(Status);
+        }
 
         public void Edit()
         {
