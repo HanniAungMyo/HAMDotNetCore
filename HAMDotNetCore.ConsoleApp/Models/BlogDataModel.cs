@@ -15,7 +15,7 @@ namespace HAMDotNetCore.ConsoleApp.Models
         public string? BlogTitle { get; set; }
         public string? BlogAuthor { get; set; }
         public string? BlogContent { get; set; }
-        public string? DeleteFlag { get; set; }
+        public bool? DeleteFlag { get; set; }
 
     }
 
@@ -25,10 +25,10 @@ namespace HAMDotNetCore.ConsoleApp.Models
         [Key]
       
         public int BlogId { get; set; }
-        public string? BlogTitle { get; set; }
-        public string? BlogAuthor { get; set; }
-        public string? BlogContent { get; set; }
-        public bool? DeleteFlag { get; set; }
+        public string BlogTitle { get; set; }
+        public string BlogAuthor { get; set; }
+        public string BlogContent { get; set; }
+        public bool DeleteFlag { get; set; }
 
     }
 }
