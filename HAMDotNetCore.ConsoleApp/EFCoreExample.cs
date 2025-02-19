@@ -55,7 +55,7 @@ namespace HAMDotNetCore.ConsoleApp
 
         public void Update(int id, string title, string author, string content) 
         {
-          
+           
             AppDbContext db = new AppDbContext();
               var item=  db.Blog.AsNoTracking().FirstOrDefault(x=>x.BlogId==id);
             if (item is null)
