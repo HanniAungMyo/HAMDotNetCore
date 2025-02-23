@@ -1,0 +1,1 @@
+efcore database First(manual >>build in project  tables in database), auto>>perivs project dll out,reference take) ,Codebase first

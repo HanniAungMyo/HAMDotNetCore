@@ -7,4 +7,4 @@ using System.Data.SqlClient;
 //AdoDotNetExample example =new AdoDotNetExample();
 //example.Update();
 EFCoreExample ef= new EFCoreExample();
-ef.Delete(2);
+ef.Read();

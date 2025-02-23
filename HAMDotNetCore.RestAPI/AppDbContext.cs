@@ -1,4 +1,5 @@
-﻿using HAMDotNetCore.ConsoleApp.Models;
+﻿
+using HAMDotNetCore.RestAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using System;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HAMDotNetCore.ConsoleApp
+namespace HAMDotNetCore.RestAPI
 {
     public class AppDbContext : DbContext
     {
@@ -20,7 +21,7 @@ namespace HAMDotNetCore.ConsoleApp
             }
         }
 
-           public DbSet<BlogDataModel> Blog { get; set; }
+           public DbSet<BlogDataModel> Blogs { get; set; }
             
         }
     }
