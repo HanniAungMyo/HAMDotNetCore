@@ -20,10 +20,10 @@ namespace HAMDotNetCore.ConsoleApp.Models
     }
 
     [Table("Tbl_Blog")]
-    public class BlogDataModel
+    public class JsonPlaceholder
     {
         [Key]
-      
+
         public int BlogId { get; set; }
         public string BlogTitle { get; set; }
         public string BlogAuthor { get; set; }
@@ -31,4 +31,14 @@ namespace HAMDotNetCore.ConsoleApp.Models
         public bool DeleteFlag { get; set; }
 
     }
+
+
+    public class Rootobject
+    {
+        public int userId { get; set; }
+        public int id { get; set; }
+        public string title { get; set; }
+        public string body { get; set; }
+    }
+
 }

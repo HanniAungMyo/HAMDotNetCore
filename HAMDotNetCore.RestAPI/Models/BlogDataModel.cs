@@ -23,7 +23,7 @@ namespace HAMDotNetCore.RestAPI.Models
     public class BlogDataModel
     {
         [Key]
-      
+
         public int BlogId { get; set; }
         public string BlogTitle { get; set; }
         public string BlogAuthor { get; set; }
@@ -31,4 +31,14 @@ namespace HAMDotNetCore.RestAPI.Models
         public bool DeleteFlag { get; set; }
 
     }
+
+
+    public class JsonPlaceholder
+    {
+        public int userId { get; set; }
+        public int id { get; set; }
+        public string title { get; set; }
+        public string body { get; set; }
+    }
+
 }

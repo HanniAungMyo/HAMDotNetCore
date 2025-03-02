@@ -13,19 +13,19 @@ namespace HAMDotNetCore.ConsoleApp.HTTPClientExample
         public async Task
              Run()
         {
-            await Read();
+            await ReadPlaceHolder();
         }
         private async Task Read()
         {
-            HttpClient client=new HttpClient();
-            HttpResponseMessage response= await client.GetAsync("https://localhost:7160/api/blogs");
-            if (response.IsSuccessStatusCode) 
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync("https://localhost:7160/api/blogs");
+            if (response.IsSuccessStatusCode)
             {
-             string json=await response.Content.ReadAsStringAsync();
+                string json = await response.Content.ReadAsStringAsync();
                 Console.WriteLine(json);
-                
-             List< BlogDataModel> lst= JsonConvert.DeserializeObject<List<BlogDataModel>>(json)!;
-                foreach (BlogDataModel model in lst)
+
+                List<JsonPlaceholder> lst = JsonConvert.DeserializeObject<List<JsonPlaceholder>>(json)!;
+                foreach (JsonPlaceholder model in lst)
                 {
                     Console.WriteLine(model.BlogTitle);
                     Console.WriteLine(model.BlogAuthor);
@@ -35,6 +35,32 @@ namespace HAMDotNetCore.ConsoleApp.HTTPClientExample
                 }
             }
 
+
+
+
+        }
+
+
+        private async Task ReadPlaceHolder()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync("https://jsonplaceholder.typicode.com/posts");
+            if (response.IsSuccessStatusCode)
+            {
+                string json = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(json);
+
+                List<Rootobject> lst = JsonConvert.DeserializeObject<List<Rootobject>>(json)!;
+                foreach (Rootobject item in lst)
+                {
+                    //Console.WriteLine(item.Title);
+                    Console.WriteLine(item.userId);
+                    Console.WriteLine(item.id);
+                    Console.WriteLine(item.title);
+                    Console.WriteLine(item.body);
+                    Console.WriteLine("----------------------------------------------------------");
+                }
+            }
         }
     }
 }

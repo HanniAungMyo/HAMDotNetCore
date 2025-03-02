@@ -17,7 +17,7 @@ namespace HAMDotNetCore.ConsoleApp
         {
             using IDbConnection db = new SqlConnection(_connectionString);
             string query = "Select * from Tbl_blog where DeleteFlag=0";
-            var lst = db.Query<BlogDataModel>(query).ToList();
+            var lst = db.Query<JsonPlaceholder>(query).ToList();
             foreach (var item in lst)
             {
                 Console.WriteLine(item.BlogId);
@@ -40,7 +40,7 @@ namespace HAMDotNetCore.ConsoleApp
                                   ,@BlogAuthor
                                   ,@blogContent
                                   ,0)";
-            int result = db.Execute(query, new BlogDataModel
+            int result = db.Execute(query, new JsonPlaceholder
             {
                 BlogTitle = BlogTitle,
                 BlogAuthor = BlogAuthor,
@@ -54,7 +54,7 @@ namespace HAMDotNetCore.ConsoleApp
         {
             string query = "Select * from Tbl_Blog where BlogId=@BlogId";
             using IDbConnection db = new SqlConnection(_connectionString);
-            var item = db.Query<BlogDataModel>(query, new BlogDataModel
+            var item = db.Query<JsonPlaceholder>(query, new JsonPlaceholder
             {
                 BlogId = BlogId
             }).FirstOrDefault();
@@ -76,7 +76,7 @@ namespace HAMDotNetCore.ConsoleApp
       ,[BlogContent] =@BlogContent
       ,[DeleteFlag] = 0
  WHERE BlogId=@BlogId";
-            BlogDataModel blog = new BlogDataModel()
+            JsonPlaceholder blog = new JsonPlaceholder()
             {
                 BlogId=BlogId,
                 BlogTitle=BlogTitle,
@@ -90,7 +90,7 @@ namespace HAMDotNetCore.ConsoleApp
 
         public void Delete(int id)
         {
-            BlogDataModel blog = new BlogDataModel()
+            JsonPlaceholder blog = new JsonPlaceholder()
             {
                 BlogId = id
             };
