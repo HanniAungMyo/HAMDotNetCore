@@ -1,6 +1,7 @@
 ﻿using HAMDotNetCore.RestAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata;
 
 namespace HAMDotNetCore.RestAPI.Controllers
 {
@@ -19,8 +20,17 @@ namespace HAMDotNetCore.RestAPI.Controllers
             List<BlogDataModel> lst = _db.Blogs.OrderByDescending(x => x.BlogId).ToList();
             return Ok(lst);
         }
-
-
+        [HttpGet("{id}")]
+        public IActionResult GetBlogId(int id)
+        {
+            BlogDataModel item = _db.Blogs.FirstOrDefault(item => item.BlogId == id);
+            if (item == null) 
+            {
+                return NotFound("No Data Found");
+            }
+           return Ok(item);
+            
+        }
         [HttpPost]
         public IActionResult CreateBlog(BlogDataModel blog)
         {

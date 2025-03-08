@@ -27,7 +27,7 @@ namespace HAMDotNetCore.ConsoleApp
         }
         public void Create(string title,string author,string content)
         {
-            JsonPlaceholder model = new JsonPlaceholder()
+            BlogDataModel model = new BlogDataModel()
             {
                BlogTitle = title,
                BlogAuthor = author,

@@ -10,10 +10,9 @@ namespace HAMDotNetCore.ConsoleApp.HTTPClientExample
 {
     public class HttpClientExample
     {
-        public async Task
-             Run()
+        public async Task Run()
         {
-            await ReadPlaceHolder();
+            await Edit(7);
         }
         private async Task Read()
         {
@@ -24,8 +23,8 @@ namespace HAMDotNetCore.ConsoleApp.HTTPClientExample
                 string json = await response.Content.ReadAsStringAsync();
                 Console.WriteLine(json);
 
-                List<JsonPlaceholder> lst = JsonConvert.DeserializeObject<List<JsonPlaceholder>>(json)!;
-                foreach (JsonPlaceholder model in lst)
+                List<BlogDataModel> lst = JsonConvert.DeserializeObject<List<BlogDataModel>>(json)!;
+                foreach (BlogDataModel model in lst)
                 {
                     Console.WriteLine(model.BlogTitle);
                     Console.WriteLine(model.BlogAuthor);
@@ -62,5 +61,41 @@ namespace HAMDotNetCore.ConsoleApp.HTTPClientExample
                 }
             }
         }
+
+
+        private async Task Edit(int id)
+        {
+            string url = $"https://localhost:7160/api/blogs/{id}";
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                string json = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(json);
+
+                // List<JsonPlaceholder> lst = JsonConvert.DeserializeObject<List<JsonPlaceholder>>(json)!;
+
+                BlogDataModel item = JsonConvert.DeserializeObject<BlogDataModel>(json)!;
+              
+                {  
+                
+                    Console.WriteLine(item.BlogTitle);
+                    Console.WriteLine(item.BlogAuthor);
+                    Console.WriteLine(item.BlogContent);
+                    Console.WriteLine(item.DeleteFlag);
+                    Console.WriteLine("-------------------------------------------------------------------");
+                }
+               
+            }
+
+            else
+            {
+                Console.WriteLine(await response.Content.ReadAsStringAsync());
+            }
+
+
+        }
+
+
     }
 }

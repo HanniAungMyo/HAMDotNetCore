@@ -20,7 +20,7 @@ namespace HAMDotNetCore.ConsoleApp
             }
         }
 
-           public DbSet<JsonPlaceholder> Blog { get; set; }
+           public DbSet<BlogDataModel> Blog { get; set; }
             
         }
     }

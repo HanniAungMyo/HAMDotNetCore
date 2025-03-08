@@ -20,7 +20,7 @@ namespace HAMDotNetCore.ConsoleApp.Models
     }
 
     [Table("Tbl_Blog")]
-    public class JsonPlaceholder
+    public class BlogDataModel
     {
         [Key]
 

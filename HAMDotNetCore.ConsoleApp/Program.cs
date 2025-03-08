@@ -9,5 +9,5 @@ using System.Data.SqlClient;
 //example.Update();
 //EFCoreExample ef= new EFCoreExample();
 //ef.Read();
-HttpClientExample http=new HttpClientExample();
+HttpClientExample1 http=new HttpClientExample1();
 await http.Run();
